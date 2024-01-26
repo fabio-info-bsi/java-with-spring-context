@@ -1,6 +1,7 @@
 package br.com.fabex.context;
 
 
+import br.com.fabex.context.components.PersonComponent;
 import br.com.fabex.context.components.UtilManualComponent;
 import br.com.fabex.context.config.ProjectConfig;
 import br.com.fabex.context.components.UtilAnnotationComponent;
@@ -32,6 +33,10 @@ public class SpringContextApplication {
 
         UtilManualComponent programattilly = context.getBean("programattilly", UtilManualComponent.class);
         System.out.println(programattilly.name());
+
+        PersonComponent bean = context.getBean(PersonComponent.class);
+        System.out.println(bean.getName());
+        System.out.println(bean.getPreferenceComponent());
 
     }
 

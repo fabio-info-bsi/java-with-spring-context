@@ -1,5 +1,6 @@
 package br.com.fabex.context.config;
 
+import br.com.fabex.context.components.PreferenceComponent;
 import br.com.fabex.context.components.UtilManualComponent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -19,5 +20,16 @@ public class ProjectConfig {
     @Bean("utilManualComponentAlternative")
     public UtilManualComponent utilManualComponentAlternative(){
         return new UtilManualComponent("UtilManualAlternativeComponent");
+    }
+
+    @Bean("preference")
+    @Primary
+    public PreferenceComponent preference(){
+        return new PreferenceComponent("Backend", "pt_BR", 1);
+    }
+
+    @Bean("preference2")
+    public PreferenceComponent preference2(){
+        return new PreferenceComponent("FullStack", "pt_PT", 2);
     }
 }
