@@ -8,6 +8,7 @@ public class PreferenceComponent {
     private final int version;
 
     public PreferenceComponent(String module, String language, int version) {
+        System.out.println("[PreferenceComponent] Initializing ... ");
         this.module = module;
         this.language = language;
         this.version = version;

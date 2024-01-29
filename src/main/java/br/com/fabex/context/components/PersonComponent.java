@@ -13,6 +13,7 @@ public class PersonComponent {
     private PreferenceComponent preferenceComponent; */
 
     private final PreferenceComponent preferenceComponent;
+
     /* Work !
     public PersonComponent(PreferenceComponent pc) {
         this.preferenceComponent = pc;
@@ -20,6 +21,7 @@ public class PersonComponent {
 
     /* Best practice! */
     public PersonComponent(@Qualifier("preference2") PreferenceComponent pc) {
+        System.out.println("[PreferenceComponent] Initializing ... ");
         this.preferenceComponent = pc;
     }
 

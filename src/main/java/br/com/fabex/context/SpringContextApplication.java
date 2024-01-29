@@ -1,10 +1,8 @@
 package br.com.fabex.context;
 
 
-import br.com.fabex.context.components.PersonComponent;
-import br.com.fabex.context.components.UtilManualComponent;
+import br.com.fabex.context.components.*;
 import br.com.fabex.context.config.ProjectConfig;
-import br.com.fabex.context.components.UtilAnnotationComponent;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.function.Supplier;
@@ -34,10 +32,24 @@ public class SpringContextApplication {
         UtilManualComponent programattilly = context.getBean("programattilly", UtilManualComponent.class);
         System.out.println(programattilly.name());
 
-        PersonComponent bean = context.getBean(PersonComponent.class);
-        System.out.println(bean.getName());
-        System.out.println(bean.getPreferenceComponent());
+        PersonComponent personComponent = context.getBean(PersonComponent.class);
+        System.out.println(personComponent.getName());
+        System.out.println(personComponent.getPreferenceComponent());
 
+        /* Lazy Component */
+        ProfileComponent profileComponent = context.getBean(ProfileComponent.class);
+        System.out.println("profileComponent.getPersonComponent() == personComponent: "+
+                (profileComponent.getPersonComponent() == personComponent));
+
+        /* SCOPE_PROTOTYPE (new instance by request) */
+        BallComponent ballComponent = context.getBean("soccerBall",BallComponent.class);
+        BallComponent ballComponent2 = context.getBean("soccerBall",BallComponent.class);
+        System.out.println("ballComponent == ballComponent2: "+
+                (ballComponent == ballComponent2) );
+
+        BallComponent ballComponent3 = context.getBean("basketball",BallComponent.class);
+        System.out.println("ballComponent(SCOPE_PROTOTYPE) == ballComponent3(Singleton): "+
+                (ballComponent == ballComponent3) );
     }
 
 }
